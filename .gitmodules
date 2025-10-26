@@ -1,0 +1,9 @@
+[submodule "third_party/fltk"]
+	path = third_party/fltk
+	url = https://github.com/fltk/fltk.git
+[submodule "third_party/spdlog"]
+	path = third_party/spdlog
+	url = https://github.com/gabime/spdlog.git
+[submodule "third_party/reproc"]
+	path = third_party/reproc
+	url = https://github.com/DaanDeMeyer/reproc.git
