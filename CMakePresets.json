@@ -1,0 +1,39 @@
+{
+  "version": 5,
+  "cmakeMinimumRequired": { "major": 3, "minor": 26 },
+  "configurePresets": [
+    {
+      "name": "ninja-multi",
+      "displayName": "Ninja Multi-Config (cross-platform)",
+      "generator": "Ninja Multi-Config",
+      "binaryDir": "${sourceDir}/out/build/${presetName}",
+      "installDir": "${sourceDir}/out/install/${presetName}",
+      "cacheVariables": {
+        "CMAKE_CXX_STANDARD": "20",
+        "FLYGDB_GDB_PATH": "gdb-multiarch",
+        "FLYGDB_DEFAULT_HOST": "127.0.0.1",
+        "FLYGDB_DEFAULT_PORT": "3263",
+        // FLTK options (keep it lean, bundled libs)
+        "OPTION_USE_SYSTEM_LIBJPEG": "OFF",
+        "OPTION_USE_SYSTEM_ZLIB": "OFF",
+        "OPTION_USE_SYSTEM_LIBPNG": "OFF",
+        "FLTK_BUILD_EXAMPLES": "OFF",
+        "FLTK_BUILD_TEST": "OFF"
+      }
+    },
+    {
+      "name": "msvc",
+      "displayName": "MSVC (Visual Studio, Ninja Multi-Config)",
+      "inherits": "ninja-multi",
+      "toolchainFile": "",
+      "cacheVariables": {
+      }
+    }
+  ],
+  "buildPresets": [
+    { "name": "Debug", "configurePreset": "ninja-multi", "configuration": "Debug" },
+    { "name": "Release", "configurePreset": "ninja-multi", "configuration": "Release" },
+    { "name": "MSVC-Debug", "configurePreset": "msvc", "configuration": "Debug" },
+    { "name": "MSVC-Release", "configurePreset": "msvc", "configuration": "Release" }
+  ]
+}
